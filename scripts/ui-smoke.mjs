@@ -23,6 +23,7 @@ try {
   await page.getByRole('heading', { name: 'Live shipments' }).waitFor()
   assert.ok(await page.getByText('SHP-').count() >= 1, 'approved plan should create a shipment record')
   await page.reload({ waitUntil: 'networkidle' })
+  await page.getByRole('button', { name: 'Live shipments' }).click()
   await page.getByRole('heading', { name: 'Live shipments' }).waitFor()
   assert.ok(await page.getByText('SHP-').count() >= 1, 'shipment should persist after refresh')
   await page.getByRole('button', { name: 'Simulation lab' }).click()
